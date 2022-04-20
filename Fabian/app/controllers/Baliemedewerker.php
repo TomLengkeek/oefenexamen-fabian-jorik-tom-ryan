@@ -6,6 +6,8 @@ class baliemedewerker extends Controller {
        $this->baliemedewerkerModel = $this->model('Baliemedewerkers');
     }
     public function index() {
+//this is for makning the tabel
+       
         $baliemedewerker = $this->baliemedewerkerModel->getBaliemedewerker();
 
         $rows = '';
@@ -20,7 +22,7 @@ class baliemedewerker extends Controller {
             <td> " .  $baliemedewerkers->achternaam . " </td>
             <td> " .    $baliemedewerkers->email . " </td>
             <td><a href='" .   URLROOT . "/baliemedewerker/delete/$baliemedewerkers->id'>delete</a></td>
-           <td><a href='" .   URLROOT . "/Baliemedewerker/update/$baliemedewerkers->id'>update</a></td>
+            <td><a href='" .   URLROOT . "/Baliemedewerker/update/$baliemedewerkers->id'>update</a></td>
            
 
 
@@ -38,6 +40,7 @@ class baliemedewerker extends Controller {
       
     
     }
+    //this is for update the 1 record
     public function update($id = null) {
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -46,18 +49,26 @@ class baliemedewerker extends Controller {
     
     header("Location: " . URLROOT . "/baliemedewerker/index");
     }else {
+        try {
         $row = $this->baliemedewerkerModel->getSingleBaliemedewerker($id);
         $data = [
             'title' => '<h1>Update landenoverzicht</h1>',
             'row' => $row
         ];
         $this->view("baliemedewerker/update", $data);
-    }
+     
+        }
    
-   
-    }
+ catch(PDOException $e) {
+    array_push($this->logs, 'update failed ' . $e->getMessage());
 
+ }
+   }
+}
+//this is for delete a record
     public function delete($id)  {
+
+        try {
         $this->baliemedewerkerModel->deleteBaliemedewerker($id);
         $data = 
         [
@@ -65,10 +76,13 @@ class baliemedewerker extends Controller {
         ];
         $this->view("baliemedewerker/delete", $data);
         header("Refresh:2; url=" . URLROOT . "/baliemedewerker/index");
+      }  catch(PDOException $e) {
+            array_push($this->logs, 'update failed ' . $e->getMessage());
         
+        }
     
     } 
-
+// here you create a record
     public function create() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {

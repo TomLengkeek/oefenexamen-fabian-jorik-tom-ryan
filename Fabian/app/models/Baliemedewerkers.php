@@ -6,17 +6,19 @@
         $this->db = new Database;
 
     }
+    //here you get a single records out the database
     public function getBaliemedewerker() {
         $this->db->query("SELECT * FROM persoon");
         $result = $this->db->resultSet();
         return $result;
     }
+    //here yuo get a single record
 public function getSingleBaliemedewerker($id) {
     $this->db->query("SELECT * FROM persoon WHERE id = :id");
     $this->db->bind(':id', $id, PDO::PARAM_INT);
     return $this->db->single();
 }
-
+//here you update the datebase
 public function updateBaliemedewerker($post) {
  
     $this->db->query("UPDATE persoon
@@ -35,7 +37,7 @@ public function updateBaliemedewerker($post) {
    return $this->db->execute();
    
 }
-
+//here you delete a record from the database
 public function deleteBaliemedewerker($id) {
     $this->db->query("DELETE FROM persoon WHERE id = :id");
 
@@ -43,6 +45,8 @@ public function deleteBaliemedewerker($id) {
 
     $this->db->execute();
 }
+
+//here you create a record
 public function createBaliemedewerker($post) {
     $this->db->query("INSERT INTO persoon(id, studentnummer, voornaam, tussenvoegsel, achternaam, email)
      VALUES(:id, :studentnummer, :voornaam, :tussenvoegsel, :achternaam, :email)");
