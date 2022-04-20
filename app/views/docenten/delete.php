@@ -1,0 +1,2 @@
+<!-- Delete functie -->
+<?= $data['deleteStatus']; ?>
