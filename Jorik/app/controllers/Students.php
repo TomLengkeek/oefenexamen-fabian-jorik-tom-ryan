@@ -11,6 +11,7 @@ class Students extends Controller {
     
     $students = $this->studentModel->getStudents();
 
+    try{
    
     $rows = '';
     foreach ($students as $value){
@@ -31,7 +32,11 @@ class Students extends Controller {
 
                
     }
-
+    }catch(PDOException $e)
+    {
+        echo $e->getMessage();
+        exit();
+    }
 
     $data = [
       'title' => '<h1>Studenoverzicht</h1>',
