@@ -66,7 +66,7 @@
                 </form>
 
             </div>
-            <a href="<?= URLROOT ?>/item/read" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">Go to read.php</button></a>
+            <a href="<?= URLROOT ?>/item/read/1" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">Go to read.php</button></a>
 
 
         </div>
