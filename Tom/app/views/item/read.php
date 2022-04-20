@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Artikel Overzicht</title>
+    <title>ICT Item Overzicht</title>
 
     <style>
 
@@ -37,10 +37,11 @@
                         <tr>
                             <th scope="col">id</th>
                             <th scope="col">omschrijving</th>
-                            <th scope="col">category</th>
-                            <th scope="col">aantal</th>
-                            <th scope="col">locatie</th>
-                            <th scope="col">kosten</th>
+                            <th scope="col">merk</th>
+                            <th scope="col">typenummer</th>
+                            <th scope="col">aanschaffingsdatum</th>
+                            <th scope="col">prijs</th>
+                            <th scope="col">status</th>
                             <th></th>
                             <th></th>
                         </tr>

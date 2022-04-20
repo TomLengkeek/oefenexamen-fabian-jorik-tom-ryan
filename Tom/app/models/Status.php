@@ -1,6 +1,6 @@
 <?php 
 
-class Category{
+class Status{
     public $omschrijving;
 
     public $logs = [];
@@ -12,8 +12,8 @@ class Category{
    }
 
    //reads all information from the table and returns a string for a html selector
-   public function getCategory(){
-            $this->db->query("SELECT * FROM category");
+   public function getStatus(){
+            $this->db->query("SELECT * FROM status");
             $result = $this->db->resultSet();
             
             return $result;

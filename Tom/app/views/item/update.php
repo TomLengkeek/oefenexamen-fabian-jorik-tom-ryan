@@ -23,40 +23,51 @@
 
 <body>
     <div class="container" style="padding-top: 25px;">
-        <h1> Artikel aanmaken </h1>
+        <h1> Item aanmaken </h1>
         <div class="row"> 
             <div class="col-12">
-                <form action="<?= URLROOT; ?>/artikel/create" method="post">
+                <form action="<?= URLROOT; ?>/item/update" method="post">
                     <div class="row">
                         <div class="col-6">
                             <label class="form-label">Omschrijving</label>
-                            <textarea class="form-control" name="omschrijving" required></textarea>
+                            <textarea class="form-control" name="omschrijving"required><?=$data["info"]->omschrijving?></textarea>
 
-                            <label class="form-label">Aantal</label>
-                            <input type="number" class="form-control" min="1" max="9999" name="aantal" required>
+                            <label class="form-label">Merk</label>
+                            <input type="text" class="form-control" name="merk" value="<?=$data["info"]->merk?>" required>
                         </div>
                         <div class="col-6">
-                            <label class="form-label">Category</label>
-                            <select class="form-select" aria-label="Category" name="category" required>
-                                <option selected>Select a Category</option>
+                            <label class="form-label">Status</label>
+                            <select class="form-select" aria-label="Category" name="status" required>
+                                <option selected>Select a Status</option>
                                 <?php echo $data['records']; ?>
                             </select>
                             <div id="select">
-                                <label class="form-label">Locatie (klaslokaal)</label>
-                                <input type="text" class="form-control" aria-label="Category" name="locatie" requirerd>
+                                <label class="form-label">Aanschaffingsdatum</label>
+                                <input type="date" class="form-control" aria-label="Category" value="<?=$data["info"]->aanschaffingsdatum?>" name="aanschaffingsdatum" requirerd>
                             </div>
                         </div>
                     </div>
-                    <label class="form-label">Kosten</label>
-                    <input type="number" name="kosten" step="0.01" class="form-control" required>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label">Prijs</label>
+                            <input type="number" name="prijs" step="0.01" class="form-control" value="<?=$data["info"]->prijs?>" required>
+                        </div>
+                        <div class="col-6">
+                        <label class="form-label">Typenummer</label>
+                            <input type="number" name="typenummer" step="1" class="form-control" value="<?=$data["info"]->typenummer?>" required>
+                        </div>
+                    </div>
+                   
+                    <input type="hidden" name="id" value="<?=$data["info"]->id?>">
 
                     <div id="submit">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
 
+
             </div>
-            <a href="<?= URLROOT ?>/artikel/read" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">Go to read.php</button></a>
+            <a href="<?= URLROOT ?>/item/read" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">Go to read.php</button></a>
 
 
         </div>

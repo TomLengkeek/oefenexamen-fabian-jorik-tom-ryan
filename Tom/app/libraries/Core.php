@@ -2,7 +2,7 @@
 
 class Core
 {
-    protected $currentController = 'Pages';
+    protected $currentController = 'Item';
     protected $currentMethod = 'index';
     protected $params = [];
 
@@ -45,7 +45,7 @@ class Core
             $url = explode('/', $url);
             return $url;
         } else {
-            $url = array('artikel', 'index');
+            $url = array('item', 'index');
             return $url;
         }
     }

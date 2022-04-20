@@ -16,9 +16,7 @@
 <body>
     <div class="container" style="padding-top: 25px;">
         <h1> Home </h1>
-        <a href="<?= URLROOT; ?>/artikel/read" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">Artikelen beheren</button></a>
-        <a href="<?= URLROOT; ?>/artikel/uitlenen/geleend" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">Uitgeleende artikelen</button></a>
-        <a href="<?= URLROOT; ?>/artikel/uitlenen/inleveren" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">Ingeleverde artikelen</button></a>
+        <a href="<?= URLROOT; ?>/artikel/read" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">ICT items beheren</button></a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
