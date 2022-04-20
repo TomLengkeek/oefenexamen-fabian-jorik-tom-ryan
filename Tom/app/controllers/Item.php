@@ -23,7 +23,7 @@ class Item extends Controller
 
 
     //gives the view table rows
-    public function read($message = "")
+    public function read($pageNumber,$message = "")
     {
 
         //set up alerts that pop up when we have done an action
@@ -65,14 +65,22 @@ class Item extends Controller
                             artikel verwijderen niet gelukt.. probeer later opnieuw
                             </div>';
                     break;
+                case "item-failed":
+                    $alert .= '<div class="alert alert-danger" style="text-align: center;" role="alert">
+                            items ophalen niet gelukt
+                            </div>';
+                    break;
                 default:
                     break;
             }
         }
         //create the rows for inside the table
         try {
+            if($pageNumber > $this->page_count()){
+                $pageNumber = 1;
+            }
             $records = "";
-            foreach ($this->itemModel->getItems() as $record) {
+            foreach ($this->itemModel->getPages($pageNumber) as $record) {
                 $records .= "<tr>
             <th scope='row'>" . $record->id . "</th>
             <td> " . $record->omschrijving . "</td>
@@ -97,12 +105,16 @@ class Item extends Controller
             }
         } catch (PDOException $e) {
             array_push($this->logs, 'reading failed ' . $e->getMessage());
+            echo $e->getMessage();
+            exit();
         }
 
         $data = [
             'records' => $records,
             'logs' => $this->logs,
-            'alert' => $alert
+            'alert' => $alert,
+            'pageItems' => $this->page_items($this->page_count()),
+            'pageNumber' => $pageNumber
         ];
         $this->view('item/read', $data);
     }
@@ -140,14 +152,14 @@ class Item extends Controller
 
                     array_push($this->logs, 'creating success');
                     
-                    header('Location:' . URLROOT . '/item/read/creating-success');
+                    header('Location:' . URLROOT . '/item/read/1/creating-success');
                 } catch (PDOException $e) {
                     array_push($this->logs, 'creating failed ' . $e->getMessage());
-                    header('Location:' . URLROOT . '/item/read/creating-failed');
+                    header('Location:' . URLROOT . '/item/read/1/creating-failed');
                 }
             }
             else{
-                header('Location:' . URLROOT . '/item/read/creating-failed');
+                header('Location:' . URLROOT . '/item/read/1/creating-failed');
             }
         } else {
             try {
@@ -155,7 +167,7 @@ class Item extends Controller
                 $records = $this->fillSelector();
             } catch (PDOException $e) {
                 array_push($this->logs, 'getting options failed ' . $e->getMessage());
-                header('Location:' . URLROOT . '/item/read/creating-failed');
+                header('Location:' . URLROOT . '/item/read/1/creating-failed');
             }
 
             $data = [
@@ -188,14 +200,14 @@ class Item extends Controller
         
                     $this->itemModel->updateitem();
         
-                    header("Location: " . URLROOT . "/item/read/update-success");
+                    header("Location: " . URLROOT . "/item/read/1/update-success");
                 } catch (PDOException $e) {
                     array_push($this->logs, "updating failed " . $e->getMessage());
-                    header("Location: " . URLROOT . "/item/read/update-failed");
+                    header("Location: " . URLROOT . "/item/read/1/update-failed");
                 }
             }
             else{
-                header("Location: " . URLROOT . "/item/read/update-failed");
+                header("Location: " . URLROOT . "/item/read/1/update-failed");
             }
         } else {
 
@@ -207,11 +219,11 @@ class Item extends Controller
                 if (!empty($info)) {
                     $selector = $this->fillSelector($info->status);
                 } else {
-                    header('Location:' . URLROOT . '/item/read/info-failed');
+                    header('Location:' . URLROOT . '/item/read/1/info-failed');
                 }
             } catch (PDOException $e) {
                 array_push($this->logs, 'info failed ' . $e->getMessage());
-                header('Location:' . URLROOT . '/item/read/info-failed');
+                header('Location:' . URLROOT . '/item/read/1/info-failed');
             }
         }
 
@@ -233,13 +245,13 @@ class Item extends Controller
 
                 array_push($this->logs, "deleting succes");
 
-                header("Location: " . URLROOT . "/item/read/delete-success");
+                header("Location: " . URLROOT . "/item/read/1/delete-success");
             } else {
-                header("Location: " . URLROOT . "/item/read/delete-failed");
+                header("Location: " . URLROOT . "/item/read/1/delete-failed");
             }
         } catch (PDOException $e) {
             array_push($this->logs, "deleting failed " . $e->getMessage());
-            header("Location: " . URLROOT . "/item/read/delete-failed");
+            header("Location: " . URLROOT . "/item/read/1/delete-failed");
         }
     }
     
@@ -253,5 +265,38 @@ class Item extends Controller
             }
         }
         return $validated;
+    }
+
+
+    //get the amount of records and get the amount of pages based on that
+    public function page_count(){
+        try{
+            $itemsCount = $this->itemModel->countItems()->itemCount;
+        }catch(PDOException $e){
+            header("Refresh:0; url=" . URLROOT . "/item/read/1/item-failed");
+        }
+            $pages = 0;
+            $counter = 0;
+        for($count = 0; $count <= $itemsCount; $count++){
+            if($counter == 5){
+                $counter = 0;
+                $pages++;
+            }else{
+                $counter++;
+            }    
+        }
+
+        if($counter > 0){
+            $pages++;
+        }
+        return $pages;
+    }
+
+    public function page_items($pages){
+        $page_items = "";
+        for($x=1;$x <= $pages;$x++){
+            $page_items .= '<li class="page-item"><a class="page-link" href="'. URLROOT . '/item/read/'. $x . '">'. $x. '</a></li>';
+        }
+        return $page_items;
     }
 }

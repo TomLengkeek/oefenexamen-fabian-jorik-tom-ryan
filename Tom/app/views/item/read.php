@@ -21,11 +21,11 @@
         <?php
         if(!empty($data['alert'])){
             echo $data['alert'];
-            header("Refresh: 1; url=". URLROOT . "/artikel/read");
+            header("Refresh: 1; url=". URLROOT . "/item/read/" . $data["pageNumber"]);
         }
         ?>
         <div class="row">
-            <h1>Overzicht van Artikelen</h1>
+            <h1>Overzicht van Items</h1>
         </div>
         <div class="row" style="padding-bottom:1%">
             <a href="<?=URLROOT?>/artikel/create" style="padding-top: 10px;"><button type="button" class="btn btn-secondary">artikel aanmaken</button></a>
@@ -52,6 +52,11 @@
                         ?>
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <?=$data["pageItems"]?>
+                </ul>
+                </nav>
             </div>
         </div>
     </div>
