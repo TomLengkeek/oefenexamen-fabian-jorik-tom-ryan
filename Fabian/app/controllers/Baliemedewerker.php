@@ -1,7 +1,7 @@
 <?php
 
 class baliemedewerker extends Controller {
-   
+   //controller
     public function __construct() {
        $this->baliemedewerkerModel = $this->model('Baliemedewerkers');
     }
