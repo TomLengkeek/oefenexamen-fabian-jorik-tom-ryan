@@ -1,28 +1,57 @@
 <!doctype html>
-<html>
-<head>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="description" content="Our first page">
-<meta name="keywords" content="html tutorial template">
-</head>
-<body>
-<a href="<?=URLROOT;?>/baliemedewerker/create">Nieuw record </a>
-<table>
-  <tr>
-  <th>id</th>
-  <th>name</th>
-    <th>hoofdstad</th>
-    <th>continet</th>
-    <th>populatie</th>
-    <th>update</th>
-    <th>delete</th>
-  </tr>
-  <tr>
-   <?php echo $data["baliemedewerkers"]; ?>
-  </tr>
- 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+  <a href="<?=URLROOT;?>/baliemedewerker/create">Nieuw record </a>
+  
+
+
+<table class="table table-success">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">studentnummer</th>
+      <th scope="col">voornaam</th>
+      <th scope="col">tussenvoegsel</th>
+      <th scope="col">achternaam</th>
+      <th scope="col">email</th>
+      <th scope="col">delete</th>
+      <th scope="col">email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php echo $data["baliemedewerkers"]; ?>
+  </tbody>
 </table>
-</body>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
 </html>
+
+
+
+
+
+
+
+
 
 

@@ -1,29 +1,36 @@
 create
-<form action="<?= URLROOT; ?>/countries/create" method="post">
+<form action="<?= URLROOT; ?>/baliemedewerker/create" method="post">
     <table>
         <tbody>
             <tr>
                
-                <td>  <label for="name"> naam van land</label>
-                <input type="text" name="name" id="name" ></td>
+                <td>  <label for="studentnummer"> vul hier je studentnummer in</label>
+                <input type="number" name="studentnummer" id="studentnummer" ></td>
             </tr>
             <tr>
            
                 <td>
-                <label for="name"> naam hoofdstad</label> 
-                <input type="text" name="capitalCity" id="capitalCity" ></td>
+                <label for="voornaam"> vul hier je voornaam in</label> 
+                <input type="text" name="voornaam" id="voornaam" ></td>
             </tr>
             <tr>
             
                 <td>
-                    <label for="name"> naam continent</label>
-                <input type="text" name="continent" id="continent" ></td>
+                    <label for="tussenvoegsel"> vul hier je tussenvoegsel in</label>
+                <input type="text" name="tussenvoegsel" id="tussenvoegsel" ></td>
             </tr>
             <tr>
            
                 <td> 
-                    <label for="population">hoeveelheid mensen</label>
-                <input type="number" name="population" id="population" ></td>
+                    <label for="achternaam">vul hier je achternaam in</label>
+                <input type="text" name="achternaam" id="achternaam" ></td>
+            </tr>
+
+            <tr>
+           
+                <td> 
+                    <label for="email">vul hier je email in</label>
+                <input type="text" name="email" id="email" ></td>
             </tr>
            
             <tr>

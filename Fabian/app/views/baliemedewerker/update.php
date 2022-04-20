@@ -8,16 +8,20 @@
     <table>
         <tbody>
             <tr>
-                <td><input type="text" name="name" id="name" value="<?=$data["row"]->name; ?>"></td>
+                <td><input type="nummer" name="studentnummer" id="name" value="<?=$data["row"]->studentnummer; ?>"></td>
             </tr>
             <tr>
-                <td><input type="text" name="capitalCity" id="capitalCity" value="<?=$data["row"]->capitalCity; ?>"></td>
+                <td><input type="text" name="voornaam" id="capitalCity" value="<?=$data["row"]->voornaam; ?>"></td>
             </tr>
             <tr>
-                <td><input type="text" name="continent" id="continent" value="<?=$data["row"]->continent; ?>"></td>
+                <td><input type="text" name="tussenvoegsel" id="continent" value="<?=$data["row"]->tussenvoegsel; ?>"></td>
             </tr>
             <tr>
-                <td><input type="number" name="population" id="population" value="<?=$data["row"]->population; ?>"></td>
+                <td><input type="text" name="achternaam" id="population" value="<?=$data["row"]->achternaam; ?>"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" name="email" id="population" value="<?=$data["row"]->email; ?>"></td>
             </tr>
             <tr>
                 <td><input type="hidden" name="id" value="<?=$data["row"]->id;?>"></td>

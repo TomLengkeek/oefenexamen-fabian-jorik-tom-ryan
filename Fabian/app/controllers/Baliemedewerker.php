@@ -11,16 +11,16 @@ class baliemedewerker extends Controller {
         $rows = '';
         foreach ($baliemedewerker as $baliemedewerkers) {
             
-        //  echo "informatien:" . $countrie->id . $countrie->name . $countrie->capitalCity . $countrie->continent . $countrie->population;
-        //  echo "<br>";
+        
             $rows .= "<tr><th scope='row'>" .  $baliemedewerkers->id  . "</th>
 
             <td>".  $baliemedewerkers->studentnummer   . " </td>
             <td>" .  $baliemedewerkers->voornaam  . "</td>
             <td> " .  $baliemedewerkers->tussenvoegsel . " </td>
+            <td> " .  $baliemedewerkers->achternaam . " </td>
             <td> " .    $baliemedewerkers->email . " </td>
             <td><a href='" .   URLROOT . "/baliemedewerker/delete/$baliemedewerkers->id'>delete</a></td>
-           <td><a href='" .   URLROOT . "/baliemedewerker/update/$baliemedewerkers->id'>update</a></td>
+           <td><a href='" .   URLROOT . "/Baliemedewerker/update/$baliemedewerkers->id'>update</a></td>
            
 
 
@@ -63,7 +63,7 @@ class baliemedewerker extends Controller {
         [
             'deleteStatus' => "HEt record met id = $id is verwijdert"
         ];
-        $this->view("countries/delete", $data);
+        $this->view("baliemedewerker/delete", $data);
         header("Refresh:2; url=" . URLROOT . "/baliemedewerker/index");
         
     
