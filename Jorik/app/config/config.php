@@ -6,7 +6,7 @@ define('DB_NAME', 'mydb');
 
 define('APPROOT', dirname(dirname(__FILE__))) ;
 
-define('URLROOT', 'http://www.oefenexamen.org/');
+define('URLROOT', 'http://oefenex.org/');
 
 define('SITENAME', 'MVC Framework');
 ?>
